@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oteri Divine — Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #030712;
+    --navy: #071633;
+    --navy-2: #0B2249;
+    --blue-mid: #123B6B;
+    --blue-bright: #2F8FE0;
+    --sky: #A9D9FF;
+    --paper: #EAF4FF;
+    --paper-dim: rgba(234,244,255,0.62);
+    --line: rgba(169,217,255,0.14);
+    --radius: 18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;overflow-x:hidden;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky);opacity:0.8;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.05;letter-spacing:-0.01em;}
+  nav{position:fixed; top:0; left:0; right:0; z-index:100;display:flex; align-items:center; justify-content:space-between;padding:22px 6vw;background:linear-gradient(to bottom, rgba(3,7,18,0.85), transparent);backdrop-filter:blur(6px);}
+  .nav-mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;}
+  .nav-mark span{color:var(--blue-bright);}
+  .nav-links{display:flex; gap:32px; font-size:14px; color:var(--paper-dim);}
+  .nav-links a:hover{color:var(--paper);}
+  .nav-cta{font-family:'IBM Plex Mono',monospace;font-size:12px;border:1px solid var(--line);padding:9px 16px;border-radius:999px;letter-spacing:0.04em;transition:border-color .2s, background .2s;}
+  .nav-cta:hover{border-color:var(--blue-bright); background:rgba(47,143,224,0.1);}
+  @media (max-width:720px){ .nav-links{display:none;} }
+  .hero{position:relative;min-height:100vh;display:flex; flex-direction:column; align-items:center; justify-content:center;text-align:center;padding:120px 6vw 80px;overflow:hidden;}
+  .aurora{position:absolute; inset:-20%;z-index:0;filter:blur(60px);opacity:0.85;}
+  .blob{position:absolute;border-radius:50%;mix-blend-mode:screen;}
+  .blob-a{width:60vw; height:60vw; top:-10%; left:-15%;background:radial-gradient(circle at 30% 30%, var(--blue-bright), transparent 70%);animation:driftA 22s ease-in-out infinite;}
+  .blob-b{width:50vw; height:50vw; bottom:-15%; right:-10%;background:radial-gradient(circle at 60% 60%, var(--sky), transparent 70%);opacity:0.6;animation:driftB 26s ease-in-out infinite;}
+  .blob-c{width:40vw; height:40vw; top:30%; left:35%;background:radial-gradient(circle at 50% 50%, var(--blue-mid), transparent 70%);opacity:0.7;animation:driftC 30s ease-in-out infinite;}
+  @keyframes driftA{0%,100%{ transform:translate(0,0) scale(1); }50%{ transform:translate(6vw,8vh) scale(1.12); }}
+  @keyframes driftB{0%,100%{ transform:translate(0,0) scale(1); }50%{ transform:translate(-5vw,-6vh) scale(1.08); }}
+  @keyframes driftC{0%,100%{ transform:translate(0,0) scale(1); }50%{ transform:translate(-4vw,5vh) scale(0.9); }}
+  .hero-content{ position:relative; z-index:2; max-width:900px; }
+  .hero .eyebrow{ display:inline-block; margin-bottom:22px; }
+  .hero h1{font-size:clamp(48px, 9vw, 108px);color:var(--paper);}
+  .hero h1 em{font-style:normal;background:linear-gradient(100deg, var(--sky), var(--blue-bright) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p{margin-top:26px;font-size:clamp(16px, 2vw, 19px);color:var(--paper-dim);max-width:560px;margin-left:auto; margin-right:auto;}
+  .hero-actions{margin-top:40px;display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.03em;padding:14px 26px;border-radius:999px;display:inline-flex; align-items:center; gap:8px;transition:transform .2s, box-shadow .2s, background .2s;}
+  .btn-primary{background:linear-gradient(100deg, var(--blue-bright), #6BC1FF);color:#031022;font-weight:500;box-shadow:0 0 0 0 rgba(47,143,224,0.5);}
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(47,143,224,0.6); }
+  .btn-ghost{border:1px solid var(--line);color:var(--paper);}
+  .btn-ghost:hover{ border-color:var(--blue-bright); background:rgba(47,143,224,0.08); }
+  .scroll-cue{position:absolute; bottom:36px; left:50%; transform:translateX(-50%);z-index:2;width:1px; height:56px;background:linear-gradient(to bottom, transparent, var(--sky));opacity:0.5;}
+  .scroll-cue::after{content:'';position:absolute; top:0; left:-2.5px;width:6px; height:6px; border-radius:50%;background:var(--sky);animation:cue 2.4s ease-in-out infinite;}
+  @keyframes cue{0%{ top:0; opacity:0; }20%{ opacity:1; }80%{ opacity:1; }100%{ top:56px; opacity:0; }}
+  section{ position:relative; padding:120px 6vw; }
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .section-head .eyebrow{ margin-bottom:14px; display:block; }
+  .section-head h2{ font-size:clamp(30px, 4vw, 46px); color:var(--paper); }
+  .section-head p{ margin-top:16px; color:var(--paper-dim); font-size:16px; line-height:1.6; }
+  .work-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;}
+  @media (max-width:980px){ .work-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .work-grid{ grid-template-columns:1fr; } }
+  .work-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--navy-2);border:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .work-card.in-view{ opacity:1; transform:translateY(0); }
+  .work-card img{width:100%; height:100%; object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .6s;filter:saturate(0.92);}
+  .work-card:hover img{ transform:scale(1.06); filter:saturate(1.05); }
+  .work-tag{position:absolute; top:14px; left:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(3,7,18,0.55);border:1px solid rgba(234,244,255,0.18);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;color:var(--paper);}
+  .work-overlay{position:absolute; inset:0;display:flex; align-items:flex-end;padding:20px;background:linear-gradient(to top, rgba(3,7,18,0.88) 0%, rgba(3,7,18,0.15) 45%, transparent 70%);opacity:0;transition:opacity .35s ease;}
+  .work-card:hover .work-overlay{ opacity:1; }
+  .work-overlay h3{ font-size:18px; color:var(--paper); }
+  .services{display:grid;grid-template-columns:repeat(4, 1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  @media (max-width:900px){ .services{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .services{ grid-template-columns:1fr;} }
+  .service{background:var(--navy);padding:32px 26px;transition:background .3s;}
+  .service:hover{ background:var(--navy-2); }
+  .service .num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue-bright);margin-bottom:18px;display:block;}
+  .service h3{ font-size:19px; color:var(--paper); margin-bottom:10px; }
+  .service p{ font-size:14px; color:var(--paper-dim); line-height:1.55; }
+  .about-strip{display:flex; align-items:center; gap:64px;flex-wrap:wrap;}
+  .about-strip .big-quote{flex:1 1 480px;font-family:'Space Grotesk',sans-serif;font-size:clamp(24px, 3.4vw, 38px);line-height:1.25;color:var(--paper);}
+  .about-strip .big-quote em{font-style:normal;color:var(--sky);}
+  .stat-col{ flex:1 1 240px; display:flex; flex-direction:column; gap:28px; }
+  .stat{ border-top:1px solid var(--line); padding-top:14px; }
+  .stat .n{ font-family:'Space Grotesk',sans-serif; font-size:34px; color:var(--blue-bright); }
+  .stat .l{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--paper-dim); letter-spacing:0.04em; text-transform:uppercase; margin-top:4px;}
+  .contact{text-align:center;padding-bottom:140px;}
+  .contact h2{font-size:clamp(34px, 6vw, 68px);color:var(--paper);max-width:820px;margin:0 auto;}
+  .contact h2 em{font-style:normal;background:linear-gradient(100deg, var(--sky), var(--blue-bright) 60%);-webkit-background-clip:text; background-clip:text; color:transparent;}
+  .contact p{ margin-top:20px; color:var(--paper-dim); font-size:16px; }
+  .contact-links{margin-top:48px;display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .contact-link{display:flex; align-items:center; gap:10px;border:1px solid var(--line);padding:14px 22px;border-radius:999px;font-size:14px;transition:border-color .2s, background .2s, transform .2s;}
+  .contact-link:hover{ border-color:var(--blue-bright); background:rgba(47,143,224,0.08); transform:translateY(-2px); }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--blue-bright); }
+  footer{border-top:1px solid var(--line);padding:28px 6vw;display:flex; justify-content:space-between; align-items:center;flex-wrap:wrap; gap:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-mark">OTERI<span>·</span>DIVINE</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Start a project</a>
+</nav>
+<section class="hero">
+  <div class="aurora">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+  <div class="hero-content">
+    <span class="eyebrow">Graphic Designer · Nigeria</span>
+    <h1>Flyers that get<br><em>read, shared, remembered.</em></h1>
+    <p>I design flyers, posters and social graphics for churches, brands and small businesses — built to stop the scroll and get the message across.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Start a project →</a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+<section id="work">
+  <div class="section-head">
+    <span class="eyebrow">Selected work</span>
+    <h2>A flyer for every kind of business.</h2>
+    <p>From ministry programs to skincare launches — every brief gets its own visual language, not a template with new text.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-card"><img src="1782251216096.jpg" alt="Burning Bush prayer conference flyer"><span class="work-tag">Ministry Event</span><div class="work-overlay"><h3>The Joel Army Ministry</h3></div></div>
+    <div class="work-card"><img src="1782251199310.jpg" alt="Lumière Skincare flyer"><span class="work-tag">Skincare</span><div class="work-overlay"><h3>Lumière Skincare</h3></div></div>
+    <div class="work-card"><img src="1782579340162.jpg" alt="The Winlos anniversary flyer"><span class="work-tag">Anniversary</span><div class="work-overlay"><h3>The Winlos — 13 Years</h3></div></div>
+    <div class="work-card"><img src="1782579354761.jpg" alt="Mama Titi's Kitchen menu flyer"><span class="work-tag">Restaurant</span><div class="work-overlay"><h3>Mama Titi's Kitchen</h3></div></div>
+    <div class="work-card"><img src="1782579377678.jpg" alt="Polished Perfection Studio nails flyer"><span class="work-tag">Nail Studio</span><div class="work-overlay"><h3>Polished Perfection Studio</h3></div></div>
+    <div class="work-card"><img src="1782579416581.jpg" alt="Gadget Guru electronics flyer"><span class="work-tag">Electronics</span><div class="work-overlay"><h3>Gadget Guru</h3></div></div>
+    <div class="work-card"><img src="1782251887538.jpg" alt="Ori Luxe glam flyer"><span class="work-tag">Beauty & Glam</span><div class="work-overlay"><h3>Ori Luxe</h3></div></div>
+    <div class="work-card"><img src="1782579383782.jpg" alt="Joy Tijani Coca-Cola Depot flyer"><span class="work-tag">Beverage Depot</span><div class="work-overlay"><h3>Joy — Tijani Coca-Cola Depot</h3></div></div>
+    <div class="work-card"><img src="1782251207622.jpg" alt="Royal Mane and Glams flyer"><span class="work-tag">Hair & Glam</span><div class="work-overlay"><h3>Royal Mane & Glams</h3></div></div>
+  </div>
+</section>
+<section id="services">
+  <div class="section-head">
+    <span class="eyebrow">What I offer</span>
+    <h2>Design, sorted by what you need it for.</h2>
+  </div>
+  <div class="services">
+    <div class="service"><span class="num">01</span><h3>Event Flyers</h3><p>Conferences, anniversaries, church programs — clear hierarchy so dates and details never get lost.</p></div>
+    <div class="service"><span class="num">02</span><h3>Business Flyers</h3><p>Menus, price lists, service breakdowns for shops, kitchens and studios.</p></div>
+    <div class="service"><span class="num">03</span><h3>Brand Social Graphics</h3><p>Instagram and TikTok-ready visuals that keep a business looking consistent across every post.</p></div>
+    <div class="service"><span class="num">04</span><h3>Celebration Designs</h3><p>Anniversaries, birthdays and milestone flyers people actually want to repost.</p></div>
+  </div>
+</section>
+<section id="about">
+  <div class="about-strip">
+    <p class="big-quote">Every business has a story worth <em>designing properly</em> — I make sure it looks as good as it sounds.</p>
+    <div class="stat-col">
+      <div class="stat"><div class="n">9+</div><div class="l">Industries designed for</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Custom, no templates</div></div>
+      <div class="stat"><div class="n">TikTok</div><div class="l">@oteridivine</div></div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <span class="eyebrow">Get in touch</span>
+  <h2 style="margin-top:18px;">Got a flyer<br><em>that needs designing?</em></h2>
+  <p>Send the brief — event details, business info, whatever you've got. I'll take it from there.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="https://wa.me/2348069714585" target="_blank" rel="noopener"><span class="dot"></span>WhatsApp — 0806 971 4585</a>
+    <a class="contact-link" href="mailto:deigodivine@gmail.com"><span class="dot"></span>deigodivine@gmail.com</a>
+    <a class="contact-link" href="https://www.tiktok.com/@oteridivine" target="_blank" rel="noopener"><span class="dot"></span>TikTok — @oteridivine</a>
+  </div>
+</section>
+<footer>
+  <span>© 2026 Oteri Divine</span>
+  <span>Graphic Designer — Nigeria</span>
+</footer>
+<script>
+  const cards = document.querySelectorAll('.work-card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c=> io.observe(c));
+</script>
+</body>
+</html>
